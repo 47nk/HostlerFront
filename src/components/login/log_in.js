@@ -10,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState(""); // For password confirmation
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState("");
 
   const validateUsername = (username) => {
@@ -84,6 +85,7 @@ const Login = () => {
       <h2>{isSigningUp ? "Create Account" : "Login"}</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
+        {/* username */}
         <div className="form-group">
           <input
             type="text"
@@ -91,10 +93,10 @@ const Login = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             onFocus={() => setUsername("")}
-            // onBlur={() => setUsername("Username")}
             placeholder="Username"
           />
         </div>
+        {/* password */}
         <div className="form-group">
           <div className="password-input">
             <input
@@ -103,9 +105,9 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onFocus={() => setPassword("")}
-              // onBlur={() => setPassword("Password")}
               placeholder="Password"
             />
+            {/* eye icon */}
             <button
               type="button"
               className="toggle-password"
@@ -115,27 +117,33 @@ const Login = () => {
             </button>
           </div>
         </div>
-
+        {/* confirm password in case of sign up */}
         {isSigningUp && (
           <div className="form-group">
             <input
-              type="password"
+              type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              onFocus={() => setPassword("")}
-              // onBlur={() => setPassword("Password")}
               placeholder="Confirm Password"
             />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? <SlashEyeIcon /> : <EyeIcon />}
+            </button>
           </div>
         )}
-
+        {/* login/signup button */}
         <button type="submit">
           {isSigningUp ? "Create Account" : "Login"}
         </button>
+
         <p>
           {isSigningUp ? "Already have an account?" : "Don't have an account?"}{" "}
-          <a onClick={() => setIsSigningUp(!isSigningUp)}>
+          <a href="#" onClick={() => setIsSigningUp(!isSigningUp)}>
             {isSigningUp ? "Login" : "Sign Up"}
           </a>
         </p>

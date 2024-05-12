@@ -1,10 +1,18 @@
 import React from "react";
-import Login from "./components/login/log_in"; // Import the Login component
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./components/login/log_in";
+import NavigationBar from "./components/navigation_bar/navigationBar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<NavigationBar />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
