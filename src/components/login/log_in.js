@@ -63,13 +63,10 @@ const Login = () => {
     } else {
       // Login logic (unchanged)
       try {
-        const response = await axios.post(
-          "http://localhost:8080/handlers/login",
-          {
-            username,
-            password,
-          }
-        );
+        const response = await axios.post("http://localhost:8080/users/login", {
+          username,
+          password,
+        });
         console.log("Login Successful:", response.data);
         // Handle successful login response, e.g., redirect to dashboard
       } catch (error) {
