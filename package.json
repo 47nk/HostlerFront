@@ -1,0 +1,69 @@
+{
+	"name": "interactive-dashboard",
+	"version": "1.0.0",
+	"description": "Intrective DashBoard for managing sales,products, transaction and much more",
+	"type": "module",
+	"keywords": [
+		"DashBoard",
+		"Sales chard",
+		"Intrective DashBoard"
+	],
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"lint:css": "stylelint './src/**/*.ts'",
+		"lint:all": "npx prettier . --write && npm run lint:css &&  npm run lint:fix",
+		"preview": "vite preview",
+		"prepare": "husky",
+		"pre-commit": "lint-staged"
+	},
+	"dependencies": {
+		"@emotion/react": "^11.13.3",
+		"@emotion/styled": "^11.13.0",
+		"@mui/material": "5.16.7",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-router-dom": "^6.28.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.13.0",
+		"svgo": "^3.3.2",
+		"@types/node": "^22.9.0",
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
+		"@vitejs/plugin-legacy": "^5.4.3",
+		"@vitejs/plugin-react": "^4.3.3",
+		"eslint": "9.14.0",
+		"eslint-import-resolver-typescript": "^3.6.3",
+		"eslint-plugin-react": "^7.37.2",
+		"eslint-plugin-react-hooks": "^5.0.0",
+		"eslint-plugin-react-refresh": "^0.4.14",
+		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"globals": "^15.11.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.2.10",
+		"postcss-styled-syntax": "^0.7.0",
+		"prettier": "3.3.3",
+		"stylelint": "^16.10.0",
+		"stylelint-config-standard": "^36.0.1",
+		"stylelint-order": "^6.0.4",
+		"stylelint-processor-styled-components": "^1.10.0",
+		"terser": "^5.36.0",
+		"typescript": "~5.6.2",
+		"typescript-eslint": "^8.11.0",
+		"vite": "^5.4.10",
+		"vite-plugin-html": "^3.2.2",
+		"vite-plugin-image-optimizer": "^1.1.8",
+		"vite-tsconfig-paths": "^5.1.2"
+	},
+	"lint-staged": {
+		"*.{ts,tsx,html,css}": [
+			"npm run lint:all"
+		]
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	}
+}
