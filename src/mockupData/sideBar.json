@@ -1,0 +1,65 @@
+[
+	[
+		{
+			"displayLabel": "Overview",
+			"icon": "chart",
+			"url": "/overview"
+		},
+		{
+			"displayLabel": "Pages",
+			"icon": "report",
+			"url": "/pages",
+			"subLinks": [
+				{
+					"displayLabel": "Page 1",
+					"url": "/pages/page1"
+				},
+				{
+					"displayLabel": "Page 2",
+					"url": "/pages/page2"
+				}
+			]
+		},
+		{
+			"displayLabel": "sales",
+			"icon": "shoping bag",
+			"subLinks": [
+				{
+					"displayLabel": "Product List",
+					"url": "/sales/productlist"
+				},
+				{
+					"displayLabel": "Billing",
+					"url": "/sales/billing"
+				},
+				{
+					"displayLabel": "Invoice",
+					"url": "/sales/invoice"
+				}
+			]
+		},
+		{
+			"displayLabel": "Messages",
+			"icon": "inbox",
+			"url": "/messages",
+			"notificationCount": 2
+		}
+	],
+	[
+		{
+			"displayLabel": "Docs",
+			"icon": "file",
+			"url": "/docs"
+		},
+		{
+			"displayLabel": "Components",
+			"icon": "components",
+			"url": "/components"
+		},
+		{
+			"displayLabel": "Help",
+			"icon": "help",
+			"url": "/help"
+		}
+	]
+]
