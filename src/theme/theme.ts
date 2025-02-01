@@ -1,43 +1,81 @@
-import { colors } from '@constants';
 import { createTheme } from '@mui/material/styles';
 
+import { BREAKPOINTS, COLORS } from '@constants';
+
+import { resetCSS } from './reset';
+import { createTypography } from './typography';
 let theme = createTheme({
+	components: {
+		MuiCssBaseline: {
+			styleOverrides: {
+				...resetCSS,
+				'::-webkit-scrollbar': {
+					width: '4px',
+					height: '8px',
+				},
+				'::-webkit-scrollbar-thumb': {
+					scrollbarGutter: 'stable both-edges',
+					backgroundColor: COLORS.shadows.primary,
+					borderRadius: '4px',
+				},
+				'::-webkit-scrollbar-thumb:hover': {
+					backgroundColor: COLORS.shadows.secondary,
+				},
+				'::-webkit-scrollbar-track': {
+					backgroundColor: 'transparent',
+				},
+			},
+		},
+	},
 	breakpoints: {
 		values: {
-			xs: 0,
-			sm: 320,
-			md: 768,
-			lg: 1024,
-			xl: 1440,
+			xs: BREAKPOINTS.xs,
+			sm: BREAKPOINTS.sm,
+			md: BREAKPOINTS.md,
+			lg: BREAKPOINTS.lg,
+			xl: BREAKPOINTS.xl,
 		},
 	},
 	palette: {
 		background: {
-			default: colors.light.background.default,
+			default: COLORS.background.default,
 		},
 		text: {
-			primary: colors.light.text.primary,
-			secondary: colors.light.text.secondary,
+			primary: COLORS.text.primary,
+			secondary: COLORS.text.secondary,
+			tertiary: COLORS.text.tertiary,
 		},
 		primary: {
-			main: colors.light.primary.main,
-			dark: colors.light.primary.dark,
-			light: colors.light.primary.light,
+			main: COLORS.primary.main,
+			dark: COLORS.primary.dark,
+			light: COLORS.primary.light,
+		},
+		success: {
+			main: COLORS.primary.light,
+			dark: COLORS.primary.dark,
+			light: COLORS.primary.light,
+			contrastText: COLORS.primary.dark,
 		},
 		warning: {
-			main: colors.light.warning.main,
-			dark: colors.light.warning.dark,
-			light: colors.light.warning.light,
+			main: COLORS.warning.light,
+			dark: COLORS.warning.dark,
+			light: COLORS.warning.light,
+			contrastText: COLORS.warning.dark,
 		},
 		error: {
-			main: colors.light.error.main,
-			dark: colors.light.error.dark,
-			light: colors.light.error.light,
+			main: COLORS.error.light,
+			dark: COLORS.error.dark,
+			light: COLORS.error.light,
+			contrastText: COLORS.error.dark,
 		},
 	},
 	typography: {
 		htmlFontSize: 10,
 		fontFamily: ['Inter', 'sans-serif'].join(','),
+		fontWeightLight: 400,
+		fontWeightRegular: 500,
+		fontWeightMedium: 600,
+		fontWeightBold: 700,
 	},
 	mixins: {
 		scrollable: {
@@ -47,7 +85,7 @@ let theme = createTheme({
 			flexDirection = 'row',
 			alignItems = 'flex-start',
 			justifyContent = 'flex-start',
-			flexWrap = 'wrap',
+			flexWrap = 'nowrap',
 		) => ({
 			display: 'flex',
 			flexDirection,
@@ -55,39 +93,17 @@ let theme = createTheme({
 			justifyContent,
 			flexWrap,
 		}),
+		ellipsis: {
+			whiteSpace: 'nowrap',
+			overflow: 'hidden',
+			textOverflow: 'ellipsis',
+		},
 	},
+	spacing: (factor: number) => `${0.2 * factor}rem`,
 });
 
 theme = createTheme(theme, {
-	typography: {
-		h2: {
-			color: theme.palette.text.primary,
-			fontSize: '3rem',
-			fontWeight: 700,
-			[theme.breakpoints.up('md')]: {
-				fontSize: '3.9rem',
-			},
-			[theme.breakpoints.up('lg')]: {
-				fontSize: '4.8rem',
-			},
-		},
-		subtitle: {
-			fontSize: '1.6rem',
-			fontWeight: 400,
-			color: theme.palette.text.secondary,
-			[theme.breakpoints.up('md')]: {
-				fontSize: '1.8rem',
-			},
-			[theme.breakpoints.up('lg')]: {
-				fontSize: '2rem',
-			},
-		},
-		h3: {
-			fontSize: '2rem',
-			color: theme.palette.text.primary,
-			fontWeight: 700,
-		},
-	},
+	typography: createTypography(theme),
 });
 
-export default theme;
+export { theme };

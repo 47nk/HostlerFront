@@ -1,32 +1,52 @@
-import { MainLayout } from '@layouts';
-import { Dashboard, ErrorPage } from '@pages';
+import { ProtectedRoute } from 'components';
 import { createBrowserRouter } from 'react-router-dom';
 
-export const router = createBrowserRouter(
-	[
-		{
-			path: '/',
-			element: <MainLayout />,
-			errorElement: (
-				<MainLayout hideSidebar>
-					<ErrorPage errorCode="404" />
-				</MainLayout>
-			),
-			children: [
-				{
-					path: '/',
-					element: <Dashboard />,
-				},
-			],
-		},
-	],
+import { MainLayout } from '@layouts';
+import { Dashboard, ErrorPage, Login } from '@pages';
+
+export const router = createBrowserRouter([
 	{
-		future: {
-			v7_relativeSplatPath: false,
-			v7_fetcherPersist: false,
-			v7_normalizeFormMethod: false,
-			v7_partialHydration: false,
-			v7_skipActionErrorRevalidation: false,
-		},
+		path: '/',
+		element: <MainLayout />,
+		errorElement: <ErrorPage errorCode="500" />,
+		children: [
+			{
+				index: true, // Default route
+				element: (
+					<ProtectedRoute>
+						<Dashboard />
+					</ProtectedRoute>
+				),
+			},
+			{
+				path: '/dashboard',
+				element: (
+					<ProtectedRoute>
+						<Dashboard />
+					</ProtectedRoute>
+				),
+			},
+		],
 	},
-);
+	{
+		path: '/',
+		element: <MainLayout hideSidebar />,
+		errorElement: <ErrorPage errorCode="500" />,
+		children: [
+			{
+				path: '/login',
+				element: <Login />,
+			},
+		],
+	},
+	{
+		path: '*',
+		element: <MainLayout hideSidebar />,
+		children: [
+			{
+				path: '*',
+				element: <ErrorPage errorCode="404" />,
+			},
+		],
+	},
+]);

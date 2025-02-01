@@ -1,15 +1,21 @@
-import { Button } from '@mui/material';
-import { styled } from '@mui/system';
+import { Button as MUIButton } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-// Styled Button
-export const StyledButton = styled(Button)(({ theme }) => ({
-	padding: theme.spacing(1, 2),
-	borderRadius: 15,
-	backgroundColor: theme.palette.primary.main,
-	color: theme.palette.primary.contrastText,
-	textTransform: 'none',
-	fontWeight: 600,
-	'&:hover': {
-		backgroundColor: theme.palette.primary.dark,
-	},
-}));
+export const Button = styled(MUIButton)(({ theme }) => {
+	const {
+		palette: { primary },
+		typography: { pxToRem, fontWeightMedium },
+		spacing,
+	} = theme;
+	return {
+		padding: spacing(2, 4),
+		borderRadius: pxToRem(16),
+		backgroundColor: primary.main,
+		color: primary.contrastText,
+		textTransform: 'none',
+		fontWeight: fontWeightMedium,
+		'&:hover': {
+			backgroundColor: primary.dark,
+		},
+	};
+});

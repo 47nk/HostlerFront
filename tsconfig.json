@@ -2,6 +2,7 @@
 	"compilerOptions": {
 		"target": "ES2022",
 		"lib": ["ES2023", "DOM", "DOM.Iterable"],
+		"types": ["vite/client"],
 		"module": "ESNext",
 		"composite": true,
 		"skipLibCheck": true,
@@ -10,9 +11,13 @@
 			"@assets/*": ["assets/*"],
 			"@constants": ["constants/"],
 			"@components": ["components/"],
+			"@containers": ["containers/"],
 			"@layouts": ["layouts"],
 			"@pages": ["pages"],
-			"@mockupData/*": ["mockupData/*"]
+			"@mockData/*": ["mockData/*"],
+			"@utils": ["utils/"],
+			"@reduxStore": ["redux/store"],
+			"@hooks": ["hooks/"]
 		},
 		"moduleResolution": "Bundler",
 		"allowImportingTsExtensions": false,
@@ -27,6 +32,6 @@
 		"noUncheckedSideEffectImports": true,
 		"esModuleInterop": true
 	},
-	"include": ["src"],
+	"include": ["src/**/*"],
 	"exclude": ["node_modules", "dist"]
 }

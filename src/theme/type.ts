@@ -9,5 +9,9 @@ declare module '@mui/material/styles' {
 			justifyContent?: React.CSSProperties['justifyContent'],
 			flexWrap?: React.CSSProperties['flexWrap'],
 		) => CSSProperties;
+		ellipsis: CSSProperties;
+	}
+	interface TypeText {
+		tertiary: string;
 	}
 }
