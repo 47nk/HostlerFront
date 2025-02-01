@@ -1,0 +1,44 @@
+[
+	{
+		"label": "Restaurant booking app",
+		"id": 1,
+		"technologyStack": ["React & Bootstrap Framework"],
+		"path": "/products/restaurant-booking-app",
+		"sales": 70
+	},
+	{
+		"label": "UI Kit",
+		"id": 2,
+		"technologyStack": ["React & Bootstrap Framework"],
+		"path": "/products/ui-kit",
+		"sales": 54
+	},
+	{
+		"label": "Design System Pro",
+		"id": 3,
+		"technologyStack": ["Bootstrap Framework"],
+		"path": "/products/design-system-pro",
+		"sales": 47
+	},
+	{
+		"label": "Dashboard",
+		"id": 4,
+		"technologyStack": ["Tailwind", "React"],
+		"path": "/products/dashboard",
+		"sales": 43
+	},
+	{
+		"label": "GlassMorphism UI",
+		"id": 5,
+		"technologyStack": ["Vue Js", "Tailwind"],
+		"path": "/products/glassmorphism-ui",
+		"sales": 38
+	},
+	{
+		"label": "Multipurpose Template",
+		"id": 6,
+		"technologyStack": ["React & Bootstrap Framework"],
+		"path": "/products/multipurpose-template",
+		"sales": 22
+	}
+]

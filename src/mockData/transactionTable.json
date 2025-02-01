@@ -1,0 +1,110 @@
+{
+	"columns": [
+		{
+			"headerName": "Transaction",
+			"field": "transaction",
+			"elementType": "string"
+		},
+		{
+			"headerName": "Date & Time",
+			"field": "date",
+			"elementType": "number"
+		},
+		{
+			"headerName": "Amount",
+			"field": "amount",
+			"elementType": "string"
+		},
+		{
+			"headerName": "Status",
+			"field": "status",
+			"elementType": "chip"
+		}
+	],
+	"rows": [
+		{
+			"user": "Bonnie Green",
+			"date": 1619184000000,
+			"amount": 2300000,
+			"currency": "$",
+			"status": "Completed",
+			"transactionId": "TXN001"
+		},
+		{
+			"user": "Bonnie Green",
+			"date": 1619184000000,
+			"amount": -670,
+			"currency": "$",
+			"status": "Completed",
+			"transactionId": "TXN002"
+		},
+		{
+			"user": "Jese Leos",
+			"date": 1618704000000,
+			"amount": 234,
+			"currency": "$",
+			"status": "Cancelled",
+			"transactionId": "TXN003"
+		},
+		{
+			"user": "Bonnie Green",
+			"date": 1618444800000,
+			"amount": 5000,
+			"currency": "$",
+			"status": "In progress",
+			"transactionId": "TXN004"
+		},
+		{
+			"user": "Jese Leos",
+			"date": 1618444800000,
+			"amount": 2300,
+			"currency": "$",
+			"status": "In progress",
+			"color": "blue",
+			"transactionId": "TXN005"
+		},
+		{
+			"user": "THEMSBERG LLC",
+			"date": 1618108800000,
+			"amount": 280,
+			"currency": "$",
+			"status": "Completed",
+			"color": "green",
+			"transactionId": "TXN006"
+		},
+		{
+			"user": "Jese Leos",
+			"date": 1618704000000,
+			"amount": 234,
+			"currency": "$",
+			"status": "Cancelled",
+			"transactionId": "TXN003"
+		},
+		{
+			"user": "Bonnie Green",
+			"date": 1618444800000,
+			"amount": 5000,
+			"currency": "$",
+			"status": "In progress",
+			"transactionId": "TXN004"
+		},
+		{
+			"user": "Jese Leos",
+			"date": 1618444800000,
+			"amount": 2300,
+			"currency": "$",
+			"status": "In progress",
+			"color": "blue",
+			"transactionId": "TXN005"
+		},
+		{
+			"user": "THEMSBERG LLC",
+			"date": 1618108800000,
+			"amount": 280,
+			"currency": "$",
+			"status": "Completed",
+			"color": "green",
+			"transactionId": "TXN006"
+		}
+	]
+}

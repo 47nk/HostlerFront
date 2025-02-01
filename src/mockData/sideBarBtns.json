@@ -1,0 +1,17 @@
+[
+	{
+		"buttonLabel": "Adjust",
+		"buttonIcon": "tune",
+		"path": "/Adjust"
+	},
+	{
+		"buttonLabel": "Language",
+		"buttonIcon": "globe",
+		"path": "/Language"
+	},
+	{
+		"buttonLabel": "Settings",
+		"buttonIcon": "gear",
+		"path": "/Settings"
+	}
+]
