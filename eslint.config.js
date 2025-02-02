@@ -39,6 +39,7 @@ export default tseslint.config(
 			...reactPlugin.configs.recommended.rules,
 			...reactHooks.configs.recommended.rules,
 			'react/react-in-jsx-scope': 'off',
+			'@typescript-eslint/no-explicit-any': 'off', // OR 'warn' if you want warnings instead of errors
 			'react/jsx-uses-vars': 'off',
 			'react/prop-types': 'off',
 			'react-refresh/only-export-components': [

@@ -1,6 +1,5 @@
-import React from 'react';
-
-import { Box, Grid, Tooltip, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
+import { ContentTooltip } from 'components/ContentTooltip';
 
 // Function to get color based on the transaction amount
 const getTransactionColor = (amount) => {
@@ -28,7 +27,7 @@ export const Heatmap = ({ transactions }) => {
 								transform: 'scale(1.07)',
 							},
 						}}>
-						<Tooltip
+						<ContentTooltip
 							title={
 								<Box>
 									{/* Display the date and total amount */}
@@ -70,7 +69,7 @@ export const Heatmap = ({ transactions }) => {
 									justifyContent: 'center',
 								}}
 							/>
-						</Tooltip>
+						</ContentTooltip>
 					</Box>
 				))}
 			</Grid>

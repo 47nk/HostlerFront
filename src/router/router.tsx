@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: '/',
-		element: <MainLayout hideSidebar />,
+		element: <MainLayout hideSidebar hideHeader />,
 		errorElement: <ErrorPage errorCode="500" />,
 		children: [
 			{

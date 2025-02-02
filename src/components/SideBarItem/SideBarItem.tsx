@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -13,32 +13,26 @@ import {
 } from './SideBarItem.styles';
 import { SideBarItemProps } from './SideBarItem.types';
 
-/**
- *
- * @param item
- * @returns renders the sidebarItem entry
- */
 export const SidebarItem = ({ item }: SideBarItemProps) => {
 	const hasSubLinks = Boolean(item.subLinks?.length);
 	const [isOpen, setIsOpen] = useState(false);
 
-	/**
-	 * Opens the collapsed side bar menu entry.
-	 */
-	const handleClick = () => {
+	const handleClick = useCallback(() => {
 		if (hasSubLinks) {
-			setIsOpen(!isOpen);
+			setIsOpen((prev) => !prev);
 		}
-	};
+	}, [hasSubLinks]);
 
 	return (
 		<>
 			<StyledNavLink
 				to={item.url || '#'}
 				hasSubLinks={hasSubLinks}
+				onClick={handleClick}
 				className={({ isActive }) => (isActive && !hasSubLinks ? 'active' : '')}
-				onClick={handleClick}>
-				{item?.icon && iconMap[item.icon as keyof typeof iconMap]}
+				aria-expanded={hasSubLinks ? isOpen : undefined}>
+				{item.icon && iconMap[item.icon as keyof typeof iconMap]}
+
 				<CustomTooltip
 					title={item.displayLabel}
 					disableInteractive
@@ -46,7 +40,7 @@ export const SidebarItem = ({ item }: SideBarItemProps) => {
 					<StyledListItemText>{item.displayLabel}</StyledListItemText>
 				</CustomTooltip>
 
-				{item.notificationCount && (
+				{item.notificationCount ? (
 					<CustomTooltip title={item.notificationCount} offset={[0, -10]}>
 						<StyledBadge
 							badgeContent={item.notificationCount}
@@ -54,7 +48,7 @@ export const SidebarItem = ({ item }: SideBarItemProps) => {
 							max={9}
 						/>
 					</CustomTooltip>
-				)}
+				) : null}
 
 				{hasSubLinks && (isOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />)}
 			</StyledNavLink>
@@ -64,11 +58,12 @@ export const SidebarItem = ({ item }: SideBarItemProps) => {
 					in={isOpen}
 					timeout="auto"
 					unmountOnExit
-					sx={{
-						marginLeft: (theme) => theme.typography.pxToRem(35),
-					}}>
+					sx={{ marginLeft: (theme) => theme.typography.pxToRem(35) }}>
 					{item.subLinks?.map((subItem) => (
-						<SidebarItem key={subItem.displayLabel} item={subItem} />
+						<SidebarItem
+							key={subItem.id || subItem.displayLabel}
+							item={subItem}
+						/>
 					))}
 				</Collapse>
 			)}

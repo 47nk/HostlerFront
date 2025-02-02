@@ -1,4 +1,5 @@
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import CampaignIcon from '@mui/icons-material/Campaign';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HorizontalSplitIcon from '@mui/icons-material/HorizontalSplit';
 import LockIcon from '@mui/icons-material/Lock';
@@ -14,6 +15,7 @@ export const iconMap = {
 	'shopping-bag': <ShoppingBagIcon />,
 	inbox: <MoveToInboxIcon />,
 	lock: <LockIcon />,
+	CampaignIcon: <CampaignIcon />,
 	AssignmentIcon: <AssignmentIcon />,
 	support: <SupportIcon />,
 	DescriptionIcon: <DescriptionIcon />,
