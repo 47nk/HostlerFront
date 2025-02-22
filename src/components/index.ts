@@ -7,6 +7,8 @@ export { GalleryImageItem } from './GalleryImageItem';
 export { Heatmap } from './HeatMap';
 export { List } from './List';
 export { ListItem } from './ListItem';
+export { MediaContainer } from './MediaContainer';
+export { MessageCard } from './MessageCard';
 export { ProfileAvatar } from './ProfileAvatar';
 export { ProtectedRoute } from './ProtectedRoute';
 export { SidebarItem } from './SideBarItem';

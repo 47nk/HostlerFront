@@ -1,3 +1,4 @@
+import { BusinessTwoTone, TagTwoTone } from '@mui/icons-material';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import CampaignIcon from '@mui/icons-material/Campaign';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -23,4 +24,6 @@ export const iconMap = {
 	tune: <TuneIcon />,
 	globe: <PublicIcon />,
 	gear: <SettingsOutlinedIcon />,
+	BusinessTwoTone: <BusinessTwoTone />,
+	TagTwoTone: <TagTwoTone />,
 };

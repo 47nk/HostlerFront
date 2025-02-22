@@ -55,6 +55,7 @@ export const CurrentMonthSummary = () => {
 						billing_month:
 							formattedMonth != '202411' ? formattedMonth : '202411',
 					},
+					withCredentials: true,
 				},
 			);
 
@@ -71,11 +72,12 @@ export const CurrentMonthSummary = () => {
 	const getCurrentDues = async () => {
 		try {
 			const response = await axios.get(
-				`${apiEndpoints.localAPI}/dashboard/get-dues`,
+				`${apiEndpoints.remoteAPI}/dashboard/get-dues`,
 				{
 					params: {
 						user_id: userState.ID,
 					},
+					withCredentials: true,
 				},
 			);
 

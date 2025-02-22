@@ -106,6 +106,8 @@ export const Login = () => {
 			navigate('/dashboard', { replace: true });
 		} catch (err) {
 			setError(err.response?.data || 'Login failed. Please try again.');
+			console.log(err);
+
 			setSnackbarOpen(true);
 		} finally {
 			setLoading(false);

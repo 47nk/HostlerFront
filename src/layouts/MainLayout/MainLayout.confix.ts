@@ -12,7 +12,7 @@ export const fetchAnnouncementsData = async (): Promise<any[]> => {
 			?.split('=')[1];
 
 		const { data: entities } = await axios.get(
-			`${apiEndpoints.localAPI}/announcements/get-channels`,
+			`${apiEndpoints.remoteAPI}/announcements/get-channels`,
 			{
 				withCredentials: true, // This sends cookies with the request
 				headers: { Cookie: `jwt=${token}` },
@@ -21,10 +21,11 @@ export const fetchAnnouncementsData = async (): Promise<any[]> => {
 		// Map each entity into a tree node with its channels as subLinks
 		let treeData = entities.map((entity: any) => ({
 			displayLabel: entity.name,
-			icon: 'folder', // optional icon for the entity
+			icon: 'BusinessTwoTone', // optional icon for the entity
 			subLinks: entity.Channels.map((channel: any) => ({
+				icon: 'TagTwoTone',
 				displayLabel: channel.Name.toLowerCase(),
-				url: `/channel/${entity.id}/${channel.Name.toLowerCase()}`,
+				url: `/channel/${channel.ID}`,
 			})),
 		}));
 

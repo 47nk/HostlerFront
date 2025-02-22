@@ -13,8 +13,9 @@ export const AmountCell: React.FC<AmountCellProps> = ({
 	return (
 		<CustomTooltip title={`${isNegative}${currency}${Math.abs(value)}`}>
 			<Typography
-				variant="h3"
-				fontWeight={600}
+				sx={{
+					fontSize: '1.4rem',
+				}}
 				component={
 					'span'
 				}>{`${isNegative}${currency}${formattedValue}`}</Typography>

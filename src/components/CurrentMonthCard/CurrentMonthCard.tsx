@@ -81,16 +81,18 @@ function CurrentMonthCard({
 				label={title}
 				color={chipColor}
 				sx={{
-					fontSize: '1.2rem',
+					fontSize: '1.6rem',
 					padding: '1rem',
+					textTransform: 'capitalize',
+					borderRadius: 2,
 				}}
 			/>
 			{loading ? (
 				<Skeleton variant="text" width={100} height={40} />
 			) : (
 				<ContentTooltip title={tooltipContent} arrow disableInteractive>
-					<Typography variant="h4" sx={{ color: '#242731', cursor: 'pointer' }}>
-						₹{`${formattedValue}${unit}`}
+					<Typography variant="h4" sx={{ color: '#71717A', cursor: 'pointer' }}>
+						₹ {`${formattedValue}${unit}`}
 					</Typography>
 				</ContentTooltip>
 			)}

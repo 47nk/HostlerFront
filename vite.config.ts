@@ -33,7 +33,8 @@ export default defineConfig({
 		}),
 	],
 	server: {
-		open: true,
+		host: '0.0.0.0', // Listen on all IPs
 		port: 5317,
+		open: true,
 	},
 });

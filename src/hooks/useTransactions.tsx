@@ -18,7 +18,11 @@ export const useTransactions = (
 				const offset = (page - 1) * limit;
 				const response = await axios.get(
 					'https://hostlerback.onrender.com/dashboard/get-bills',
-					{ params: { user_id: userId, limit, offset } },
+
+					{
+						params: { user_id: userId, limit, offset },
+						withCredentials: true, // This sends cookies with the request
+					},
 				);
 				setTransactions(response.data);
 			} catch (err) {

@@ -19,7 +19,17 @@ export const CustomChip: React.FC<CustomChipProps> = ({ label }) => {
 
 	return (
 		<CustomTooltip title={label}>
-			<Chip color={getChipColor(label)} label={label} />
+			<Chip
+				color={getChipColor(label)}
+				sx={{
+					borderRadius: 2,
+					paddingInline: 4,
+					minWidth: '12rem',
+					textTransform: 'capitalize',
+					fontWeight: '500',
+				}}
+				label={label}
+			/>
 		</CustomTooltip>
 	);
 };

@@ -92,7 +92,7 @@ export const TransactionTable = () => {
 	return (
 		<Card
 			minHeight={670}
-			padding={20}
+			padding={10}
 			title="Bills"
 			subHeading="This is a list of latest transactions.">
 			<TableContainer>
@@ -115,6 +115,7 @@ export const TransactionTable = () => {
 									(sortConfig.direction === 'asc' ? '↑' : '↓')}
 							</StyledTableCell>
 							<StyledTableCell
+								sx={{ textAlign: 'center' }}
 								onClick={() => sortTransactions('PaymentStatus')}>
 								Payment Status{' '}
 								{sortConfig.key === 'PaymentStatus' &&
@@ -147,7 +148,10 @@ export const TransactionTable = () => {
 												formatter={amountFormatter}
 											/>
 										</StyledTableCell>
-										<StyledTableCell>
+										<StyledTableCell
+											sx={{
+												textAlign: 'center',
+											}}>
 											<CustomChip label={row.PaymentStatus} />
 										</StyledTableCell>
 									</StyledTableRow>
