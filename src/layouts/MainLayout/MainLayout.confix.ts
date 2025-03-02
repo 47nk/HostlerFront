@@ -12,7 +12,7 @@ export const fetchAnnouncementsData = async (): Promise<any[]> => {
 			?.split('=')[1];
 
 		const { data: entities } = await axios.get(
-			`${apiEndpoints.remoteAPI}/announcements/get-channels`,
+			`${apiEndpoints.localAPI}/announcements/get-channels`,
 			{
 				withCredentials: true, // This sends cookies with the request
 				headers: { Cookie: `jwt=${token}` },

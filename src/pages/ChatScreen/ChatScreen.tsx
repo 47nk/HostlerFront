@@ -113,7 +113,7 @@ export const ChatScreen: React.FC = () => {
 				)}
 			</Box>
 
-			<MessageInput />
+			<MessageInput channel_id={channel_id ?? ''} />
 		</Container>
 	);
 };

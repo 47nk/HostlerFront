@@ -48,7 +48,7 @@ export const CurrentMonthSummary = () => {
 				.replace('-', '');
 			const formattedMonth = currentMonth.replace('-', '');
 			const response = await axios.get(
-				`${apiEndpoints.remoteAPI}/dashboard/get-transactions`,
+				`${apiEndpoints.localAPI}/dashboard/get-transactions`,
 				{
 					params: {
 						user_id: userState.ID,
@@ -72,7 +72,7 @@ export const CurrentMonthSummary = () => {
 	const getCurrentDues = async () => {
 		try {
 			const response = await axios.get(
-				`${apiEndpoints.remoteAPI}/dashboard/get-dues`,
+				`${apiEndpoints.localAPI}/dashboard/get-dues`,
 				{
 					params: {
 						user_id: userState.ID,

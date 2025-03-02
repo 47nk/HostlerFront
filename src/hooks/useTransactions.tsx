@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
+import { apiEndpoints } from '@constants';
+
 export const useTransactions = (
 	userId: string | number,
 	page = 1,
@@ -17,7 +19,7 @@ export const useTransactions = (
 			try {
 				const offset = (page - 1) * limit;
 				const response = await axios.get(
-					'https://hostlerback.onrender.com/dashboard/get-bills',
+					`${apiEndpoints.localAPI}/dashboard/get-bills`,
 
 					{
 						params: { user_id: userId, limit, offset },

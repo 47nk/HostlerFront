@@ -16,7 +16,9 @@ import axios from 'axios';
 
 import { apiEndpoints } from '@constants';
 
-export const MessageInput = () => {
+export const MessageInput: React.FC<{ channel_id: string }> = ({
+	channel_id,
+}) => {
 	const [newMessage, setNewMessage] = useState('');
 	const [modalOpen, setModalOpen] = useState(false);
 	const [selectedFiles, setSelectedFiles] = useState([]);
@@ -29,7 +31,7 @@ export const MessageInput = () => {
 			formData.append('title', newMessage);
 			formData.append('type', 'text');
 			formData.append('description', newMessage);
-			formData.append('channel_id', '11');
+			formData.append('channel_id', channel_id);
 
 			selectedFiles?.forEach((file) => formData.append('attachments', file));
 
