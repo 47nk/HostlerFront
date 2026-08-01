@@ -1,73 +1,9 @@
 [
 	[
 		{
-			"displayLabel": "Overview",
+			"displayLabel": "Dashboard",
 			"icon": "piechart",
 			"url": "/"
-		},
-		{
-			"displayLabel": "Pages",
-			"icon": "DescriptionIcon",
-			"subLinks": [
-				{
-					"displayLabel": "Page 1",
-					"url": "/pages/page1"
-				},
-				{
-					"displayLabel": "Page 2",
-					"url": "/pages/page2"
-				}
-			]
-		},
-		{
-			"displayLabel": "sales",
-			"icon": "shopping-bag",
-			"subLinks": [
-				{
-					"displayLabel": "Pages",
-					"subLinks": [
-						{
-							"displayLabel": "Page 1",
-							"url": "/pages/page1"
-						},
-						{
-							"displayLabel": "Page 2",
-							"url": "/pages/page2"
-						}
-					]
-				},
-				{
-					"displayLabel": "Billing",
-					"url": "/sales/billing"
-				},
-				{
-					"displayLabel": "Invoice",
-					"url": "/sales/invoice"
-				}
-			]
-		},
-		{
-			"displayLabel": "Messages",
-			"icon": "inbox",
-			"url": "/messages",
-			"notificationCount": 1
-		}
-	],
-	[
-		{
-			"displayLabel": "Docs",
-			"icon": "AssignmentIcon",
-			"url": "/docs"
-		},
-		{
-			"displayLabel": "Components",
-			"icon": "HorizontalSplitIcon",
-			"url": "/components"
-		},
-		{
-			"displayLabel": "Help",
-			"icon": "support",
-			"url": "/help"
 		}
 	]
 ]

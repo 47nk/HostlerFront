@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Box, Grid, Skeleton } from '@mui/material';
 import axios from 'axios';
@@ -12,9 +12,11 @@ import { DayData, TransactionRow } from './CurrentMonthSummary.types';
 
 export const CurrentMonthSummary = () => {
 	const [heatMapData, setHeatMapData] = useState<DayData[]>([]);
-	const [isLoading, setIsLoading] = useState<boolean>(true); // Track loading state
-	const [isDuesLoading, setIsDuesLoading] = useState<boolean>(true); // Track loading state
-	const userState = useSelector((state) => state.auth.user);
+	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const [isDuesLoading, setIsDuesLoading] = useState<boolean>(true);
+	const userState = useSelector((state) => {
+		return state.auth.user;
+	});
 	const [dues, setDues] = useState({});
 	const [hasError, setHasError] = useState(false);
 	function segregateAndSumByDay(rows: TransactionRow[]) {
@@ -46,13 +48,14 @@ export const CurrentMonthSummary = () => {
 				.replace('-', '');
 			const formattedMonth = currentMonth.replace('-', '');
 			const response = await axios.get(
-				`${apiEndpoints.remoteAPI}/dashboard/get-transactions`,
+				`${apiEndpoints.localAPI}/dashboard/get-transactions`,
 				{
 					params: {
 						user_id: userState.ID,
 						billing_month:
 							formattedMonth != '202411' ? formattedMonth : '202411',
 					},
+					withCredentials: true,
 				},
 			);
 
@@ -69,17 +72,22 @@ export const CurrentMonthSummary = () => {
 	const getCurrentDues = async () => {
 		try {
 			const response = await axios.get(
-				`${apiEndpoints.remoteAPI}/dashboard/get-dues`,
+				`${apiEndpoints.localAPI}/dashboard/get-dues`,
 				{
 					params: {
 						user_id: userState.ID,
 					},
+					withCredentials: true,
 				},
 			);
 
 			const duesData = response.data;
-			setDues(duesData);
-			console.log(duesData);
+
+			const totalDue = duesData.TotalDueSplit.reduce(
+				(acc: number, due) => acc + Number(due.due_value),
+				0,
+			);
+			setDues({ ...duesData, totalDue: totalDue });
 			setIsDuesLoading(false);
 		} catch (error) {
 			console.error('Error fetching Dues:', error);
@@ -141,9 +149,10 @@ export const CurrentMonthSummary = () => {
 			/>
 			<CurrentMonthCard
 				title={'Total Due'}
-				amount={'19303'}
+				amount={dues.totalDue}
 				chipColor={'error'}
 				loading={isDuesLoading}
+				additionalContent={dues.TotalDueSplit}
 			/>
 		</Box>
 	);

@@ -11,9 +11,9 @@ export const BillTypeCell = ({ billType }) => {
 		<CustomTooltip title={billType}>
 			<Typography
 				component="span"
-				variant="h3"
 				sx={{
 					...ellipsis,
+					fontSize: '1.4rem',
 				}}>
 				{billType}
 			</Typography>

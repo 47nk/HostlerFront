@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { ErrorBoundary, Header, SideBar } from '@containers';
 import { ErrorPage } from '@pages';
 
+import { fetchAnnouncementsData } from './MainLayout.confix';
 import {
 	ContentContainer,
 	LayoutContainer,
@@ -14,11 +15,16 @@ import {
 } from './MainLayout.styles';
 import { MainLayoutProps } from './MainLayout.types';
 
-export const MainLayout = ({ hideSidebar = false }: MainLayoutProps) => {
+export const MainLayout = ({
+	hideSidebar = false,
+	hideHeader = false,
+}: MainLayoutProps) => {
 	/** STATES */
 	const [isSideBarPresent, setIsSideBarPresent] = useState<boolean>();
 	const [isSidebarOpen, setSidebarOpen] = useState(false);
 	const sidebarContainerRef = useRef<HTMLDivElement>(null);
+	const [sidebarData, setSidebarData] = useState<any[]>([]); // State to hold the sidebar data
+	const [sidebarLoading, setSidebarLoading] = useState<boolean>(true); // Loading state
 	const isLargeScreen = useMediaQuery(({ breakpoints }: Theme) =>
 		breakpoints.up('md'),
 	);
@@ -33,7 +39,6 @@ export const MainLayout = ({ hideSidebar = false }: MainLayoutProps) => {
 
 	/**
 	 * Used to automatically close the sidebar when going to large screen and coming back to tablet or mobile is screen
-	 *
 	 */
 	useEffect(() => {
 		if (isSidebarOpen && isLargeScreen) {
@@ -48,12 +53,43 @@ export const MainLayout = ({ hideSidebar = false }: MainLayoutProps) => {
 		setSidebarOpen(!isSidebarOpen);
 	};
 
+	/**
+	 * Fetch announcements and set the sidebar data
+	 */
+	useEffect(() => {
+		const fetchData = async () => {
+			const loadSidebarData = async () => {
+				try {
+					// Fetch announcements and update the sidebar data
+					const data = await fetchAnnouncementsData();
+					console.log(data);
+
+					setSidebarData(data); // This will replace the sidebar data with the new one
+					setSidebarLoading(false);
+				} catch (error) {
+					console.error('Error loading sidebar data:', error);
+				}
+			};
+
+			loadSidebarData();
+		};
+
+		if (!hideSidebar) {
+			fetchData(); // Fetch sidebar data on component mount
+		}
+	}, [hideSidebar]);
+
 	return (
 		<LayoutContainer>
 			<ErrorBoundary>
-				<Box>
-					<Header hideSideBar={isSideBarPresent} onMenuClick={toggleSidebar} />
-				</Box>
+				{!hideHeader && (
+					<Box>
+						<Header
+							hideSideBar={isSideBarPresent}
+							onMenuClick={toggleSidebar}
+						/>
+					</Box>
+				)}
 			</ErrorBoundary>
 			<ErrorBoundary
 				fallback={<ErrorPage errorCode="500" />}
@@ -68,7 +104,7 @@ export const MainLayout = ({ hideSidebar = false }: MainLayoutProps) => {
 								open={isLargeScreen || isSidebarOpen}
 								container={sidebarContainerRef.current}
 								onClose={toggleSidebar}>
-								<SideBar />
+								<SideBar sideBarData={sidebarData} loading={sidebarLoading} />
 							</StyledDrawer>
 						</ErrorBoundary>
 					)}

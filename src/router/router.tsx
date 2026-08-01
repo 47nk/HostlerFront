@@ -1,8 +1,9 @@
 import { ProtectedRoute } from 'components';
+import { FileUpload } from 'constants/FileUpload';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { MainLayout } from '@layouts';
-import { Dashboard, ErrorPage, Login } from '@pages';
+import { ChatScreen, Dashboard, ErrorPage, Login } from '@pages';
 
 export const router = createBrowserRouter([
 	{
@@ -26,11 +27,23 @@ export const router = createBrowserRouter([
 					</ProtectedRoute>
 				),
 			},
+			{
+				path: '/fileUpload',
+				element: <FileUpload />,
+			},
+			{
+				path: '/channel/:id',
+				element: (
+					<ProtectedRoute>
+						<ChatScreen />
+					</ProtectedRoute>
+				),
+			},
 		],
 	},
 	{
 		path: '/',
-		element: <MainLayout hideSidebar />,
+		element: <MainLayout hideSidebar hideHeader />,
 		errorElement: <ErrorPage errorCode="500" />,
 		children: [
 			{

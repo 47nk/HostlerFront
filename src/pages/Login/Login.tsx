@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { setUser } from 'redux/store/userSlice';
 
+import { apiEndpoints } from '@constants';
+
 export const Root = styled('div')(({ theme }) => ({
 	display: 'flex',
 	height: '100%',
@@ -25,7 +27,7 @@ export const Root = styled('div')(({ theme }) => ({
 export const ImageSection = styled('div')({
 	flex: 1,
 	position: 'relative',
-	background: `url("https://www.peoplesuniversity.edu.in/Dental/wp-content/uploads/2017/10/boyas-hostel-1024x649.jpg") center center / cover no-repeat`,
+	background: `url("/assets/images/backgrounds/login.webp") center center / cover no-repeat`,
 	borderRadius: '8px 0 0 8px',
 	'&::after': {
 		content: '""',
@@ -94,16 +96,18 @@ export const Login = () => {
 		setLoading(true);
 		try {
 			const response = await axios.post(
-				'https://hostlerback.onrender.com/users/login',
+				`${apiEndpoints.localAPI}/users/login`,
 				{ username, password },
+				{ withCredentials: true },
 			);
 
 			const user = response.data;
 			dispatch(setUser({ user, rememberMe }));
 			navigate('/dashboard', { replace: true });
 		} catch (err) {
-			console.log(err.response);
 			setError(err.response?.data || 'Login failed. Please try again.');
+			console.log(err);
+
 			setSnackbarOpen(true);
 		} finally {
 			setLoading(false);

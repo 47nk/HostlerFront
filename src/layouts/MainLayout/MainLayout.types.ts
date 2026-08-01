@@ -4,4 +4,9 @@ export type MainLayoutProps = {
 	 * Default is `false`, that shows that the sidebar will be visible
 	 */
 	hideSidebar?: boolean;
+	/**
+	 *
+	 *  Optional flag to hide the header. When set to `true`, the header will be hidden.
+	 */
+	hideHeader?: boolean;
 };
