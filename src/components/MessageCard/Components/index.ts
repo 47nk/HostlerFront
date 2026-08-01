@@ -1,0 +1,1 @@
+export { AnnouncementChat } from './AnnouncementChat';
